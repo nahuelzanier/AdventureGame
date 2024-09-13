@@ -30,8 +30,8 @@ radius = 6.0
 height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwdfb"]
-radius = 33.0
-height = 94.0
+radius = 29.0
+height = 86.0
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_nwya2")
@@ -51,7 +51,7 @@ shape = SubResource("CapsuleShape2D_4ndsk")
 [node name="SlimeSense" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlimeSense"]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wwdfb")
 debug_color = Color(0.414217, 0.605482, 0, 0.42)

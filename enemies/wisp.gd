@@ -22,5 +22,3 @@ func _on_move_timer_timeout():
 	if last_collision:
 		last_collision = null
 		velocity = speed * directions[randi()%4]
-
-

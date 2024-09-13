@@ -3,5 +3,3 @@ res://player/player.tscn
 res://enemies/wisp.tscn
 res://enemies/slime.tscn
 res://enemies/slime.gd
-res://player/player_controller.gd
-res://enemies/wisp.gd

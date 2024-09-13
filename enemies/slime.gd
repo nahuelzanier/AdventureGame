@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var anim_sprite = $AnimatedSprite2D
 
 var target = null
-var speed = 20
+var speed = 0.6
 
 func _ready():
 	add_to_group("ENEMY")
@@ -14,7 +14,7 @@ func _physics_process(delta):
 		anim_sprite.flip_h = velocity.x > 0
 	else:
 		velocity = Vector2.ZERO
-	move_and_slide()
+	move_and_collide(speed * velocity)
 
 func _on_slime_sense_body_entered(body):
 	if body.is_in_group("PLAYER"):
