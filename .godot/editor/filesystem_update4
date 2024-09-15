@@ -1,5 +1,5 @@
 res://game/main.tscn
 res://player/player.tscn
-res://enemies/wisp.tscn
+res://items/club.tscn
 res://enemies/slime.tscn
-res://enemies/slime.gd
+res://enemies/wisp.tscn

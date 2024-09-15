@@ -1,7 +1,49 @@
-[gd_scene load_steps=19 format=3 uid="uid://df8xxbeju1h7i"]
+[gd_scene load_steps=31 format=3 uid="uid://df8xxbeju1h7i"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_11qla"]
 [ext_resource type="Texture2D" uid="uid://dv2jvbhru8r1f" path="res://assets/player/katsuspritesheet.png" id="2_w8tlo"]
+[ext_resource type="Script" path="res://player/PlayerAction.gd" id="3_5wxu5"]
+[ext_resource type="PackedScene" uid="uid://cpushxgheuav3" path="res://items/club.tscn" id="4_u5t7d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k4ip"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(115, 0, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44gvi"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(0, 42, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlea1"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(184, 0, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qcpi"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(161, 42, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaibm"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(161, 0, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk5nh"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(115, 42, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wej24"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(207, 0, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrsj8"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(184, 42, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io47q"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(138, 0, 23, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkjh7"]
+atlas = ExtResource("2_w8tlo")
+region = Rect2(69, 42, 23, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vifc0"]
 atlas = ExtResource("2_w8tlo")
@@ -67,6 +109,61 @@ region = Rect2(69, 42, 23, 42)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4k4ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44gvi")
+}],
+"loop": false,
+"name": &"attack_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlea1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qcpi")
+}],
+"loop": false,
+"name": &"attack_side",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaibm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk5nh")
+}],
+"loop": false,
+"name": &"attack_side_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wej24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrsj8")
+}],
+"loop": false,
+"name": &"attack_side_up",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io47q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkjh7")
+}],
+"loop": false,
+"name": &"attack_up",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vifc0")
 }],
 "loop": true,
@@ -114,7 +211,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_down",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,7 +222,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_side",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,7 +233,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_side_down",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,7 +244,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_side_up",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,20 +255,33 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking_up",
-"speed": 2.0
+"speed": 3.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
 script = ExtResource("1_11qla")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-8, 0, 0, -4, 8, 0, 0, 4)
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSort"]
 z_as_relative = false
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_ggnqp")
 animation = &"idle_down"
-frame_progress = 0.573701
+autoplay = "idle_down"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(-8, 0, 0, -4, 8, 0, 0, 4)
+[node name="PlayerAction" type="Node2D" parent="YSort"]
+y_sort_enabled = true
+position = Vector2(0, -14)
+script = ExtResource("3_5wxu5")
+
+[node name="Club" parent="YSort/PlayerAction" instance=ExtResource("4_u5t7d")]
+
+[connection signal="using_item_end" from="YSort/PlayerAction" to="." method="_on_player_action_using_item_end"]
+[connection signal="using_item_start" from="YSort/PlayerAction" to="." method="_on_player_action_using_item_start"]
