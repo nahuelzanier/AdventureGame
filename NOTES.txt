@@ -1,0 +1,51 @@
+- crear main
+- tilemap(WORLD) >> Y-sorted y poner las cosas en el tilemap
+- Tileset >> floor, empty, wall, column .. colisiones
+- Input mapping
+
+- Player: CharacterBody2D, pponerlo en World.
+- AnimatedSprite2D -> crear las animaciones: idle, move
+- direction = Vector2(2*getaxis.x, getaxis.y), last_direction = direction if != ZERO
+- velocity = speed * direction
+- move_and_collide(velocity)
+- handle_walk_animation
+
+- Slime: CharacterBody2D, AnimSprite2D, CollShape, move_and_collide, var speed
+- Area2D aggro range. var target = null
+- agregar on area_entry/exit, target == body, velocity = direction_to
+- # aggro a todo >> add_to_group("PLAYER"), is_in_group("PLAYER")
+
+- PlayerAction >> sirve para tener el centro y donde vamos a manejar los distintos ataques
+- Creamos el Garrote. Area2D, Sprite2D, CollShape
+- agregamos garrote a PlayerAction, modificamos la rotacion segun direccion del player
+- injectamos action_node al garrote
+- Player >> _input action >> actions >> activate >> "BONK"
+- mostrar rotacion de player_action, explicar que queremos que el ataque haga (pegue en semicirculo)
+- creamos on_swing y on_recoil flags, max_angle, angle_prog, speed >> activate() y  _process(delta)
+- creamos las senales en playerAction para manejar el flag "using_item" del player y la animacion de ataque
+
+- slime knockback
+- slime life and lifebar
+- slime recieve_club_attack, take_damage
+- club on_area_enter >> coll disabled on/off
+
+- crear wisp >> add_to_group("ENEMY") >> mostrar que rompe ataque
+- crear _enemy.gd y ponerselo a los dos enemigos
+
+- refactorizar en _enemy.gd
+
+- Player take damage(amount y knockback_dir). move_and_collide retorna una KinematicCollision2D >> get_collider()
+- ponerlo en wisp y en slime
+
+- Transitions: create transition tile, hide() in script
+- preguntarle al current_map la coordenada, usamos un singleton, creamos global.gd
+- World >> Global.current_map = self
+- Save the tileSet, remove all elements save tilemap as scene
+- crear script de map generico, y crear el mapa vacio
+- va a tirar el error "call_deferred"
+- set_player, llamar en global transition, dictionary with [scene, position]
+- player_pos en mapa y pasarselo al mapa durante la transicion
+- crear main y posisionar y transisionar al primer mapa
+- proceso: area2D call deferred trans() a global >> global remueve el player y llama transision al mapa 
+	>> mapa cambia la pos del player y el mapa >> mapa nuevo deferred add_child(player) en _ready()
+- rompe cuando tocas dos areas a la vez, agrgar el flag en global

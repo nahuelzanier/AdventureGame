@@ -1,0 +1,76 @@
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://byb27wajge7b0"]
+
+[ext_resource type="Texture2D" uid="uid://w53y6gtth6tn" path="res://assets/blocks/block_default.png" id="1_35chy"]
+[ext_resource type="Texture2D" uid="uid://brhr0m63653fv" path="res://assets/blocks/empty.png" id="2_sgxmp"]
+[ext_resource type="Texture2D" uid="uid://b6h0ppr87uuho" path="res://assets/entities/wall.png" id="3_kw15o"]
+[ext_resource type="Texture2D" uid="uid://rtt0au26ydor" path="res://assets/entities/column.png" id="4_a1xvc"]
+[ext_resource type="PackedScene" uid="uid://cc1uc3ldbimnh" path="res://enemies/slime.tscn" id="5_qspts"]
+[ext_resource type="PackedScene" uid="uid://b486x0c6t6que" path="res://enemies/wisp.tscn" id="6_77xxk"]
+[ext_resource type="Texture2D" uid="uid://vjwt7k82eg83" path="res://assets/blocks/dungeon_tile.png" id="7_8jemj"]
+[ext_resource type="PackedScene" uid="uid://gdac0t055xo8" path="res://enviroment/transition_tile.tscn" id="8_xrbq8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skrld"]
+resource_name = "floor_default"
+texture = ExtResource("1_35chy")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yejhm"]
+resource_name = "empty"
+texture = ExtResource("2_sgxmp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 0, -8, 16, 0, 0, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xdvcd"]
+resource_name = "wall"
+texture = ExtResource("3_kw15o")
+texture_region_size = Vector2i(24, 36)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.15, -1.925, 3.95, 6.025, 9.6, 3.2, -6.4, -4.8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnbjw"]
+resource_name = "column"
+texture = ExtResource("4_a1xvc")
+texture_region_size = Vector2i(18, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.125, 0.125, -0.125, 3.875, 7.625, -0.125, -0.5, -4.375)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fetno"]
+resource_name = "enemies"
+scenes/1/scene = ExtResource("5_qspts")
+scenes/2/scene = ExtResource("6_77xxk")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21bj6"]
+resource_name = "dungeon"
+texture = ExtResource("7_8jemj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_px7oq"]
+resource_name = "enviroment"
+scenes/1/scene = ExtResource("8_xrbq8")
+
+[resource]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/1 = SubResource("TileSetAtlasSource_yejhm")
+sources/2 = SubResource("TileSetAtlasSource_xdvcd")
+sources/3 = SubResource("TileSetAtlasSource_mnbjw")
+sources/4 = SubResource("TileSetScenesCollectionSource_fetno")
+sources/5 = SubResource("TileSetAtlasSource_21bj6")
+sources/0 = SubResource("TileSetAtlasSource_skrld")
+sources/6 = SubResource("TileSetScenesCollectionSource_px7oq")

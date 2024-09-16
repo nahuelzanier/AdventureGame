@@ -1,7 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://b486x0c6t6que"]
+[gd_scene load_steps=17 format=3 uid="uid://b486x0c6t6que"]
 
 [ext_resource type="Texture2D" uid="uid://kexawj5rogi7" path="res://assets/enemies/wisp.png" id="1_2gciq"]
 [ext_resource type="Script" path="res://enemies/wisp.gd" id="1_mh1px"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvjoa"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thenx"]
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nd1gw"]
 atlas = ExtResource("1_2gciq")
@@ -99,6 +106,19 @@ height = 16.0
 z_as_relative = false
 script = ExtResource("1_mh1px")
 
+[node name="EnemyLife" type="ProgressBar" parent="."]
+offset_left = -6.0
+offset_top = -22.0
+offset_right = 66.0
+offset_bottom = 5.0
+scale = Vector2(0.157214, 0.0547397)
+theme_override_styles/background = SubResource("StyleBoxFlat_cvjoa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_thenx")
+max_value = 30.0
+step = 1.0
+value = 30.0
+show_percentage = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_as_relative = false
 position = Vector2(0, -9)
@@ -110,9 +130,3 @@ autoplay = "idle"
 position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cilqm")
-
-[node name="MoveTimer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
-[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

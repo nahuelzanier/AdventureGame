@@ -1,24 +1,30 @@
-extends CharacterBody2D
+extends "res://enemies/_enemy.gd"
 
-@onready var anim_sprite = $AnimatedSprite2D
-
-var speed = 40
-var last_collision = null
 var directions = [Vector2(2, 1), Vector2(2, -1), Vector2(-2, 1), Vector2(-2, -1)]
+var last_dir
 
 func _ready():
-	add_to_group("ENEMY")
-	velocity = speed * directions[randi()%4]
+	enemy_life = 50
+	speed = 40
+	last_dir = directions[randi()%4]
+	velocity = speed * last_dir
+	super()
 
 func _physics_process(delta):
 	last_collision = move_and_collide(velocity * delta)
-
-func _on_move_timer_timeout():
 	if velocity != Vector2.ZERO:
 		anim_sprite.play("rolling")
 	else:
 		anim_sprite.play("idle")
 	anim_sprite.flip_h = velocity.x < 0
 	if last_collision:
+		if last_collision.get_collider().is_in_group("PLAYER"):
+			last_collision.get_collider().take_damage(1, last_dir)
 		last_collision = null
-		velocity = speed * directions[randi()%4]
+		last_dir = directions[randi()%4]
+		velocity = speed * last_dir
+
+func recieve_club_attack(attack_angle):
+	super(attack_angle)
+	last_dir = -last_dir
+	velocity = speed * last_dir

@@ -1,16 +1,12 @@
-extends CharacterBody2D
-
-@onready var anim_sprite = $AnimatedSprite2D
-@onready var enemy_life_bar = $EnemyLife
+extends "res://enemies/_enemy.gd"
 
 var target = null
-var speed = 0.6
 var knockback = 10
-var enemy_life = 40
 
 func _ready():
-	enemy_life_bar.value = enemy_life
-	add_to_group("ENEMY")
+	enemy_life = 40
+	speed = 20
+	super()
 
 func _physics_process(delta):
 	if target:
@@ -18,7 +14,9 @@ func _physics_process(delta):
 		anim_sprite.flip_h = velocity.x > 0
 	else:
 		velocity = Vector2.ZERO
-	move_and_collide(speed * velocity)
+	last_collision = move_and_collide(velocity * delta)
+	if last_collision and last_collision.get_collider().is_in_group("PLAYER"):
+		last_collision.get_collider().take_damage(1, 2*velocity.normalized())
 
 func _on_slime_sense_body_entered(body):
 	if body.is_in_group("PLAYER"):
@@ -28,12 +26,6 @@ func _on_slime_sense_body_exited(body):
 	if body.is_in_group("PLAYER"):
 		target = null
 
-func take_damage(amount):
-	enemy_life -= amount
-	enemy_life_bar.value = enemy_life
-	if enemy_life <= 0:
-		queue_free()
-
 func recieve_club_attack(attack_angle):
+	super(attack_angle)
 	move_and_collide(knockback * Vector2.from_angle(attack_angle))
-	take_damage(12)

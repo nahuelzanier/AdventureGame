@@ -1,9 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://df8xxbeju1h7i"]
+[gd_scene load_steps=33 format=3 uid="uid://df8xxbeju1h7i"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_11qla"]
 [ext_resource type="Texture2D" uid="uid://dv2jvbhru8r1f" path="res://assets/player/katsuspritesheet.png" id="2_w8tlo"]
 [ext_resource type="Script" path="res://player/PlayerAction.gd" id="3_5wxu5"]
 [ext_resource type="PackedScene" uid="uid://cpushxgheuav3" path="res://items/club.tscn" id="4_u5t7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkofq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0d4o"]
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4k4ip"]
 atlas = ExtResource("2_w8tlo")
@@ -261,6 +268,21 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
 script = ExtResource("1_11qla")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerLife" type="ProgressBar" parent="."]
+offset_left = -5.0
+offset_top = 4.0
+offset_right = 67.0
+offset_bottom = 31.0
+scale = Vector2(0.157214, 0.0547397)
+theme_override_styles/background = SubResource("StyleBoxFlat_rkofq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a0d4o")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)

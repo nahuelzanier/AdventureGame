@@ -1,5 +1,10 @@
 res://game/main.tscn
+res://maps/tileSet.tres
 res://player/player.tscn
 res://items/club.tscn
 res://enemies/slime.tscn
 res://enemies/wisp.tscn
+res://enviroment/transition_tile.tscn
+res://maps/_map_base.tscn
+res://maps/map01.tscn
+res://maps/map02.tscn

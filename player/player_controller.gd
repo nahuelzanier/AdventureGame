@@ -1,32 +1,53 @@
 extends CharacterBody2D
 
 @onready var anim_sprite = $YSort/AnimatedSprite2D
+@onready var player_life_bar = $PlayerLife
 @onready var action = $YSort/PlayerAction
 
-var speed = 0.9
+var player_life = 10
+var speed = 50
 var last_direction = Vector2.ZERO
+var knockback = 2
 
 var using_item = false
 
 func _ready():
+	Global.player = self
+	player_life_bar.value = player_life
 	action.position = anim_sprite.position
 	add_to_group("PLAYER")
 
 func _input(event):
-	if event.is_action_pressed("action"):
-		action.use_item(last_direction)
+	if not using_item:
+		if event.is_action_pressed("action"):
+			action.use_item(last_direction)
 
 func _physics_process(delta):
 	if not using_item:
 		var direction = Vector2(2*Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 		if direction != Vector2.ZERO:
 			last_direction = direction
-		handle_animation(direction)
+		handle_walk_animation(direction)
 		action.rotation = last_direction.angle()
 		velocity = speed * direction.normalized()
-		move_and_collide(velocity)
+		move_and_collide(velocity * delta)
 
-func handle_animation(a_direction):
+func _on_player_action_using_item_start():
+	using_item = true
+	handle_attack_animation()
+
+func _on_player_action_using_item_end():
+	using_item = false
+
+func take_damage(amount, knock_dir=Vector2.ZERO):
+	player_life -= amount
+	player_life_bar.value = player_life
+	move_and_collide(knock_dir * knockback)
+	if player_life <= 0:
+		queue_free()
+
+#ANIMATIONS
+func handle_walk_animation(a_direction):
 	if a_direction.y < 0:
 		if a_direction.x != 0:
 			anim_sprite.play("walking_side_up")
@@ -54,8 +75,7 @@ func handle_animation(a_direction):
 			anim_sprite.play("idle_side")
 	anim_sprite.flip_h = last_direction.x < 0
 
-func _on_player_action_using_item_start():
-	using_item = true
+func handle_attack_animation():
 	if last_direction.y < 0:
 		if last_direction.x != 0:
 			anim_sprite.play("attack_side_up")
@@ -69,8 +89,3 @@ func _on_player_action_using_item_start():
 	elif last_direction.x != 0:
 		anim_sprite.play("attack_side")
 	anim_sprite.flip_h = last_direction.x < 0
-
-func _on_player_action_using_item_end():
-	using_item = false
-
-

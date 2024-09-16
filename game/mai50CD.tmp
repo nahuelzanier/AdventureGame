@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7esbvkhjgs6k"]
+
+[ext_resource type="PackedScene" uid="uid://2nwsdj7nn53d" path="res://maps/map01.tscn" id="1_2ne42"]
+[ext_resource type="PackedScene" uid="uid://df8xxbeju1h7i" path="res://player/player.tscn" id="3_chag7"]
+
+[node name="Main" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_2ne42")]
+
+[node name="Player" parent="World" instance=ExtResource("3_chag7")]
+position = Vector2(177, 261)
+
+[connection signal="body_entered" from="World/TransitionTile" to="World/TransitionTile" method="_on_body_entered"]
+[connection signal="body_entered" from="World/@Area2D@83392" to="World/@Area2D@83392" method="_on_body_entered"]

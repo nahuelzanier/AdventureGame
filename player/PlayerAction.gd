@@ -16,9 +16,8 @@ func use_item(direction):
 		current_item.activate(direction)
 
 func action_start():
-	if action_available:
-		action_available = false
-		emit_signal("using_item_start")
+	action_available = false
+	emit_signal("using_item_start")
 
 func action_end():
 	action_available = true

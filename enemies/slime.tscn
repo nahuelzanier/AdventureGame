@@ -37,8 +37,8 @@ radius = 6.0
 height = 18.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwdfb"]
-radius = 29.0
-height = 86.0
+radius = 33.0
+height = 94.0
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_nwya2")

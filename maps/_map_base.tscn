@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://buynnrjivhyyx"]
+
+[ext_resource type="TileSet" uid="uid://byb27wajge7b0" path="res://maps/tileSet.tres" id="1_h4hg4"]
+[ext_resource type="Script" path="res://maps/_map_base.gd" id="2_mfex1"]
+
+[node name="MapBase" type="TileMap"]
+z_as_relative = false
+y_sort_enabled = true
+texture_filter = 1
+texture_repeat = 1
+tile_set = ExtResource("1_h4hg4")
+format = 2
+layer_0/name = "Floor"
+layer_0/y_sort_enabled = true
+layer_0/z_index = -1
+layer_1/name = "Entities"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array()
+script = ExtResource("2_mfex1")
