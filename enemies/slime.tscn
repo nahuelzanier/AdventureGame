@@ -41,6 +41,7 @@ radius = 33.0
 height = 94.0
 
 [node name="Slime" type="CharacterBody2D"]
+position = Vector2(0, 4)
 script = ExtResource("1_nwya2")
 
 [node name="EnemyLife" type="ProgressBar" parent="."]

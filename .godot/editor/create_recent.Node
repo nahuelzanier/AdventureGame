@@ -1,10 +1,10 @@
+Label
 Camera2D
 Node
 Sprite2D
 CollisionPolygon2D
 Area2D
 ProgressBar
-Label
 CollisionShape2D
 Timer
 AnimationPlayer
