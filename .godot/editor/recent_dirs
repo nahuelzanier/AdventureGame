@@ -1,3 +1,4 @@
+res://items
 res://effects
 res://UI
 res://game
@@ -5,7 +6,6 @@ res://maps
 res://
 res://enviroment
 C:/Nahuel/curso/AdventureGame
-res://items
 res://assets/items
 res://assets/player
 res://enemies

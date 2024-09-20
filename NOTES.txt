@@ -67,3 +67,9 @@
 - add death bubbles with a timer
 - create a global effect autoload, and add a create effect on position function
 - add death sound to the explosion and autoplay
+
+- heart pick up: area 2d
+- ponerlo como mask 2 (player tiene layer 2)
+- sonido tiene que terminar antes del queue_free >> hacer un flag
+- drops: mandamos el heart_pick_up como preload en _enemy y en el death spawneamos uno random
+- call_deferred("loot")

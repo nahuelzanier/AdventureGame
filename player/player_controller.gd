@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var action = $YSort/PlayerAction
 @onready var player_ui = $PlayerUI
 
+var player_max_life = 12
 var player_life = 12
 var speed = 50
 var last_direction = Vector2.ZERO
@@ -47,6 +48,11 @@ func take_damage(amount, knock_dir=Vector2.ZERO):
 	move_and_collide(knock_dir * knockback)
 	if player_life <= 0:
 		queue_free()
+
+func pick_up_health():
+	if player_life < player_max_life:
+		player_life += 1
+		player_ui.update_ui_hearts(player_life)
 
 #ANIMATIONS
 func handle_walk_animation(a_direction):
