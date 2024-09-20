@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 @onready var anim_sprite = $YSort/AnimatedSprite2D
-@onready var player_life_bar = $PlayerLife
 @onready var action = $YSort/PlayerAction
+@onready var player_ui = $PlayerUI
 
-var player_life = 10
+var player_life = 12
 var speed = 50
 var last_direction = Vector2.ZERO
 var knockback = 2
@@ -13,8 +14,8 @@ var using_item = false
 
 func _ready():
 	Global.player = self
-	player_life_bar.value = player_life
 	action.position = anim_sprite.position
+	player_ui.update_ui_hearts(player_life)
 	add_to_group("PLAYER")
 
 func _input(event):
@@ -40,8 +41,9 @@ func _on_player_action_using_item_end():
 	using_item = false
 
 func take_damage(amount, knock_dir=Vector2.ZERO):
+	audio_stream_player_2d.play()
 	player_life -= amount
-	player_life_bar.value = player_life
+	player_ui.update_ui_hearts(player_life)
 	move_and_collide(knock_dir * knockback)
 	if player_life <= 0:
 		queue_free()

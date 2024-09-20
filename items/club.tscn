@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpushxgheuav3"]
+[gd_scene load_steps=5 format=3 uid="uid://cpushxgheuav3"]
 
 [ext_resource type="Script" path="res://items/club.gd" id="1_58jle"]
 [ext_resource type="Texture2D" uid="uid://5jib12iaorqw" path="res://assets/items/club.png" id="2_1ttgs"]
+[ext_resource type="AudioStream" uid="uid://cofwqgvwfquha" path="res://assets/sound/club_swing.wav" id="3_6r45v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddwhy"]
 size = Vector2(10, 31)
@@ -17,5 +18,9 @@ texture = ExtResource("2_1ttgs")
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_ddwhy")
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6r45v")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

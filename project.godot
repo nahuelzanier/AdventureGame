@@ -17,9 +17,14 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Global="*res://game/global.gd"
+GlobalAudio="*res://game/global_audio.tscn"
+Effects="*res://effects/effects.gd"
 
 [display]
 
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="viewport"
 window/stretch/scale=2.0
 
 [input]

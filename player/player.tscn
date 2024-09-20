@@ -1,16 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://df8xxbeju1h7i"]
+[gd_scene load_steps=34 format=3 uid="uid://df8xxbeju1h7i"]
 
 [ext_resource type="Script" path="res://player/player_controller.gd" id="1_11qla"]
+[ext_resource type="Script" path="res://player/PlayerUI.gd" id="2_ibd7s"]
 [ext_resource type="Texture2D" uid="uid://dv2jvbhru8r1f" path="res://assets/player/katsuspritesheet.png" id="2_w8tlo"]
 [ext_resource type="Script" path="res://player/PlayerAction.gd" id="3_5wxu5"]
+[ext_resource type="PackedScene" uid="uid://ceghb7wea2n6f" path="res://UI/heart_UI.tscn" id="3_tdsbp"]
 [ext_resource type="PackedScene" uid="uid://cpushxgheuav3" path="res://items/club.tscn" id="4_u5t7d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkofq"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0d4o"]
-bg_color = Color(1, 1, 1, 1)
-corner_detail = 1
+[ext_resource type="AudioStream" uid="uid://tgmj42g3lmk7" path="res://assets/sound/player_hurt.wav" id="5_60kva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4k4ip"]
 atlas = ExtResource("2_w8tlo")
@@ -267,22 +263,46 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 z_as_relative = false
+collision_layer = 3
 script = ExtResource("1_11qla")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+layer = 4
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("2_ibd7s")
 
-[node name="PlayerLife" type="ProgressBar" parent="."]
-offset_left = -5.0
-offset_top = 4.0
-offset_right = 67.0
-offset_bottom = 31.0
-scale = Vector2(0.157214, 0.0547397)
-theme_override_styles/background = SubResource("StyleBoxFlat_rkofq")
-theme_override_styles/fill = SubResource("StyleBoxFlat_a0d4o")
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
+[node name="GridContainer" type="GridContainer" parent="PlayerUI"]
+layout_direction = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 17
+theme_override_constants/v_separation = 14
+columns = 3
+
+[node name="HeartUI1" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="HeartUI2" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="HeartUI3" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="HeartUI4" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="HeartUI5" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="HeartUI6" parent="PlayerUI/GridContainer" instance=ExtResource("3_tdsbp")]
+layout_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)
@@ -304,6 +324,9 @@ position = Vector2(0, -14)
 script = ExtResource("3_5wxu5")
 
 [node name="Club" parent="YSort/PlayerAction" instance=ExtResource("4_u5t7d")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_60kva")
 
 [connection signal="using_item_end" from="YSort/PlayerAction" to="." method="_on_player_action_using_item_end"]
 [connection signal="using_item_start" from="YSort/PlayerAction" to="." method="_on_player_action_using_item_start"]

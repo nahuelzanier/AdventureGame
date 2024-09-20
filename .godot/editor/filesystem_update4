@@ -8,3 +8,6 @@ res://enviroment/transition_tile.tscn
 res://maps/_map_base.tscn
 res://maps/map01.tscn
 res://maps/map02.tscn
+res://game/global_audio.tscn
+res://UI/heart_UI.tscn
+res://effects/death_bubbles.tscn

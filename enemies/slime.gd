@@ -1,7 +1,10 @@
 extends "res://enemies/_enemy.gd"
 
+const SLIME_WALK = preload("res://assets/sound/slime_walk.wav")
+const SLIME_DEATH = preload("res://assets/sound/slime_death.wav")
+
 var target = null
-var knockback = 10
+var knockback = 15
 
 func _ready():
 	enemy_life = 40
@@ -19,13 +22,12 @@ func _physics_process(delta):
 		last_collision.get_collider().take_damage(1, 2*velocity.normalized())
 
 func _on_slime_sense_body_entered(body):
-	if body.is_in_group("PLAYER"):
-		target = body
+	play_audio(SLIME_WALK)
+	target = body
 
 func _on_slime_sense_body_exited(body):
-	if body.is_in_group("PLAYER"):
-		target = null
+	target = null
 
-func recieve_club_attack(attack_angle):
-	super(attack_angle)
-	move_and_collide(knockback * Vector2.from_angle(attack_angle))
+func recieve_club_attack(attack_coords):
+	super(attack_coords)
+	move_and_collide(knockback * attack_coords.direction_to(global_position))

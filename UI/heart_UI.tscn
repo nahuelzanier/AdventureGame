@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceghb7wea2n6f"]
+
+[ext_resource type="Script" path="res://UI/heart_UI.gd" id="1_1wun4"]
+[ext_resource type="Texture2D" uid="uid://y6cxldigij3q" path="res://assets/UI/heart_empty.png" id="2_86sin"]
+
+[node name="HeartUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wun4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.01
+anchor_bottom = 0.014
+offset_bottom = 0.4
+texture = ExtResource("2_86sin")
+stretch_mode = 2

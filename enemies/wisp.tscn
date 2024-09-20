@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b486x0c6t6que"]
+[gd_scene load_steps=18 format=3 uid="uid://b486x0c6t6que"]
 
 [ext_resource type="Texture2D" uid="uid://kexawj5rogi7" path="res://assets/enemies/wisp.png" id="1_2gciq"]
 [ext_resource type="Script" path="res://enemies/wisp.gd" id="1_mh1px"]
+[ext_resource type="AudioStream" uid="uid://cmqekra6wj0mg" path="res://assets/sound/wisp_bounce.wav" id="3_onqi1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvjoa"]
 bg_color = Color(0, 0, 0, 1)
@@ -130,3 +131,7 @@ autoplay = "idle"
 position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cilqm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_onqi1")
+bus = &"SFX"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://y57ly6k1ogch"]
+
+[ext_resource type="Script" path="res://game/global_audio.gd" id="1_jlj2h"]
+
+[node name="GlobalAudio" type="Node"]
+script = ExtResource("1_jlj2h")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

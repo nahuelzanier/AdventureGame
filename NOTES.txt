@@ -14,6 +14,7 @@
 - Area2D aggro range. var target = null
 - agregar on area_entry/exit, target == body, velocity = direction_to
 - # aggro a todo >> add_to_group("PLAYER"), is_in_group("PLAYER")
+- change it to collision layers
 
 - PlayerAction >> sirve para tener el centro y donde vamos a manejar los distintos ataques
 - Creamos el Garrote. Area2D, Sprite2D, CollShape
@@ -49,3 +50,20 @@
 - proceso: area2D call deferred trans() a global >> global remueve el player y llama transision al mapa 
 	>> mapa cambia la pos del player y el mapa >> mapa nuevo deferred add_child(player) en _ready()
 - rompe cuando tocas dos areas a la vez, agrgar el flag en global
+
+- add a new audio bus
+- Audio: added audio to club swing and club hit
+- Sound on enemies, play_audio(audio) func and preload the sounds
+- Global audio autoload >> add music tracks and transition sound
+- Global sfx for transition
+
+- main UI: start by adjusting the window size and scaling
+- title screen and press start
+- Player UI: hearts, canvasLayer, grid container en theme poner h/w distance
+- PlayerUI script, onready el ui, y hacemos la funcion update_hearts y la llamamos desde update life
+- hacer el array de hearts, las funciones en heart y la function de update con unos ifs
+
+- added backgrounds to map canvas layer, color rect
+- add death bubbles with a timer
+- create a global effect autoload, and add a create effect on position function
+- add death sound to the explosion and autoplay
