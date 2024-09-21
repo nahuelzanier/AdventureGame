@@ -13,7 +13,7 @@ var on_recoil = false
 
 var max_attack_angle = PI
 var attack_angle_progression = 0
-var attack_speed = PI/10
+var attack_speed = 6*PI
 
 func _process(delta):
 	if on_swing:
@@ -21,14 +21,14 @@ func _process(delta):
 			on_swing = false
 			on_recoil = true
 			collision_shape_2d.disabled = true
-		player_action_node.rotate(attack_speed)
-		attack_angle_progression += attack_speed
+		player_action_node.rotate(attack_speed*delta)
+		attack_angle_progression += attack_speed*delta
 	elif on_recoil:
 		if attack_angle_progression <= 0:
 			on_recoil = false
 			player_action_node.action_end()
-		player_action_node.rotate(-attack_speed*2)
-		attack_angle_progression -= attack_speed*2
+		player_action_node.rotate(-attack_speed*2*delta)
+		attack_angle_progression -= attack_speed*2*delta
 
 func activate(direction):
 	play_audio(CLUB_SWING)
