@@ -30,6 +30,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.235294, 0.737255, 0.988235, 1)
-
-[connection signal="body_entered" from="TransitionTile" to="TransitionTile" method="_on_body_entered"]
-[connection signal="body_entered" from="@Area2D@51624" to="@Area2D@51624" method="_on_body_entered"]

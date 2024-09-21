@@ -73,3 +73,7 @@
 - sonido tiene que terminar antes del queue_free >> hacer un flag
 - drops: mandamos el heart_pick_up como preload en _enemy y en el death spawneamos uno random
 - call_deferred("loot")
+
+- player dead add player_life > 0 flags and animation("dead")
+- Global.game_over() >> game_over screen with a timer to main screen
+- autostart, one shot

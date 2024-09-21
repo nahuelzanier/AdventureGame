@@ -1,6 +1,8 @@
-res://game/main.tscn
-res://maps/tileSet.tres
 res://player/player.tscn
+res://maps/tileSet.tres
+res://player/player_controller.gd
+res://game/global.gd
+res://game/main.tscn
 res://items/club.tscn
 res://enemies/slime.tscn
 res://enemies/wisp.tscn
@@ -11,9 +13,8 @@ res://maps/map02.tscn
 res://game/global_audio.tscn
 res://UI/heart_UI.tscn
 res://effects/death_bubbles.tscn
-res://NOTES.txt
 res://items/heart_pick_up.tscn
-res://items/heart_pick_up.gd
-res://player/player_controller.gd
-res://enemies/_enemy.gd
-res://game/main.gd
+res://game/game_over.gd
+res://game/game_over.tscn
+res://NOTES.txt
+res://game/global_audio.gd
