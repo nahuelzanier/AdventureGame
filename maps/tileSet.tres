@@ -15,16 +15,12 @@ resource_name = "floor_default"
 texture = ExtResource("1_35chy")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yejhm"]
 resource_name = "empty"
 texture = ExtResource("2_sgxmp")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 0, -8, 16, 0, 0, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xdvcd"]
@@ -32,8 +28,6 @@ resource_name = "wall"
 texture = ExtResource("3_kw15o")
 texture_region_size = Vector2i(24, 36)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.15, -1.925, 3.95, 6.025, 9.6, 3.2, -6.4, -4.8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnbjw"]
@@ -41,8 +35,6 @@ resource_name = "column"
 texture = ExtResource("4_a1xvc")
 texture_region_size = Vector2i(18, 40)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.125, 0.125, -0.125, 3.875, 7.625, -0.125, -0.5, -4.375)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fetno"]
@@ -55,8 +47,6 @@ resource_name = "dungeon"
 texture = ExtResource("7_8jemj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_px7oq"]
 resource_name = "enviroment"

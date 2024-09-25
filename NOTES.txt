@@ -1,4 +1,5 @@
 - crear main
+- 4.3 change maps to Node2D, define local_to_map y map_to_local from the layers
 - tilemap(WORLD) >> Y-sorted y poner las cosas en el tilemap
 - Tileset >> floor, empty, wall, column .. colisiones
 - Input mapping
@@ -73,3 +74,7 @@
 - sonido tiene que terminar antes del queue_free >> hacer un flag
 - drops: mandamos el heart_pick_up como preload en _enemy y en el death spawneamos uno random
 - call_deferred("loot")
+
+- player dead add player_life > 0 flags and animation("dead")
+- Global.game_over() >> game_over screen with a timer to main screen
+- autostart, one shot

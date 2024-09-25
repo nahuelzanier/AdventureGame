@@ -19,5 +19,8 @@ func play_music(track):
 	music.stream = track
 	music.play()
 
+func music_stop():
+	music.stop()
+
 func _on_music_finished():
 	music.play()

@@ -20,12 +20,12 @@ func _ready():
 	add_to_group("PLAYER")
 
 func _input(event):
-	if not using_item:
+	if player_life > 0 and not using_item:
 		if event.is_action_pressed("action"):
 			action.use_item(last_direction)
 
 func _physics_process(delta):
-	if not using_item:
+	if player_life > 0 and not using_item:
 		var direction = Vector2(2*Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 		if direction != Vector2.ZERO:
 			last_direction = direction
@@ -42,17 +42,22 @@ func _on_player_action_using_item_end():
 	using_item = false
 
 func take_damage(amount, knock_dir=Vector2.ZERO):
-	audio_stream_player_2d.play()
-	player_life -= amount
-	player_ui.update_ui_hearts(player_life)
-	move_and_collide(knock_dir * knockback)
-	if player_life <= 0:
-		queue_free()
+	if player_life > 0:
+		audio_stream_player_2d.play()
+		player_life -= amount
+		player_ui.update_ui_hearts(player_life)
+		move_and_collide(knock_dir * knockback)
+		if player_life <= 0:
+			anim_sprite.play("dead")
 
 func pick_up_health():
 	if player_life < player_max_life:
 		player_life += 1
 		player_ui.update_ui_hearts(player_life)
+
+func _on_animated_sprite_2d_animation_finished():
+	if anim_sprite.animation == "dead":
+		Global.game_over()
 
 #ANIMATIONS
 func handle_walk_animation(a_direction):
