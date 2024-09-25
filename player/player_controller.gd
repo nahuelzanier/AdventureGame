@@ -102,3 +102,6 @@ func handle_attack_animation():
 	elif last_direction.x != 0:
 		anim_sprite.play("attack_side")
 	anim_sprite.flip_h = last_direction.x < 0
+
+
+
